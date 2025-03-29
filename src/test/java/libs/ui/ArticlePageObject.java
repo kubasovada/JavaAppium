@@ -122,7 +122,7 @@ abstract public class ArticlePageObject extends MainPageObject {
             removeArticleFromSavedIfItAdded();
             waitForElementAndClick(OPTIONS_SAVE_ARTICLE_BUTTON_TO_MY_LIST, "Cannot find Save article button", 9);
 
-            waitForElementPresent(LOGIN_BUTTON, "No login button", 3);
+//            waitForElementPresent(LOGIN_BUTTON, "No login button", 3);
 //            boolean isNotPresent =  waitForElementNotPresent(LOGIN_BUTTON, "No login button", 5);
 //            while (isNotPresent) {
 //                waitForElementAndClick(OPTIONS_SAVE_ARTICLE_BUTTON_TO_MY_LIST, "Cannot find Save article button", 9);

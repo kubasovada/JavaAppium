@@ -1,6 +1,7 @@
 package libs.ui;
 
 import io.appium.java_client.AppiumDriver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import libs.Platform;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -12,6 +13,7 @@ abstract public class MyListsPageObject extends MainPageObject{
     ARTICLE_TITLE_TMPL,
     TAB_LIST,
     DELETE_ARTICLE_BUTTON,
+    LI_WITH_STAR,
     REMOVE_FROM_SAVED_BUTTON;
 
     //Java (programming language)
@@ -63,6 +65,8 @@ abstract public class MyListsPageObject extends MainPageObject{
         String articleXpath = getSavedArticleXPathByTitle(articleTitle);
         this.waitForArticleToAppear(articleTitle);
 
+        int starsBeforeDeletion = getAmountOfElements(LI_WITH_STAR);
+
         if (Platform.getInstance().isIOS() || Platform.getInstance().isAndroid()) {
             // this.waitForArticleToAppear(articleTitle);
             this.swipeElementToLeft(articleXpath, "Cannot find saved article");
@@ -81,7 +85,10 @@ abstract public class MyListsPageObject extends MainPageObject{
             driver.navigate().refresh();
         }
 
+
         this.waitForArticleToDisappear(articleTitle);
+        int starsAfterDeletion = getAmountOfElements(LI_WITH_STAR);
+        Assert.assertTrue(starsBeforeDeletion == starsAfterDeletion + 1);
     }
 
 }
