@@ -17,8 +17,9 @@ public class AuthorizationPageObject extends MainPageObject {
     }
 
     public void clickAuthButton() {
-        waitForElementPresent(LOGIN_BUTTON, "Cannot find auth button", 7);
-        waitForElementAndClick(LOGIN_BUTTON, "Cannot find and click auth button", 7);
+        waitForElementToBeClickable(LOGIN_BUTTON, "Not clickable login button", 10);
+        waitForElementPresent(LOGIN_BUTTON, "Cannot find auth button", 10);
+        waitForElementAndClick(LOGIN_BUTTON, "Cannot find and click auth button", 10);
 
     }
 

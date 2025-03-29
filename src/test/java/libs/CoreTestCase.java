@@ -37,11 +37,11 @@ public class CoreTestCase extends TestCase {
 
     }
 
-//    @Override
-//    protected void tearDown() throws Exception {
-//        super.tearDown();
-//        driver.quit();
-//    }
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        driver.quit();
+    }
 
     protected void rotateScreenLandscape() {
         if (driver instanceof AppiumDriver) {

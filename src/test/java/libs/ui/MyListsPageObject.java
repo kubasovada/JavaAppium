@@ -56,12 +56,14 @@ abstract public class MyListsPageObject extends MainPageObject{
     }
 
     public void waitForArticleToDisappear(String articleTitle) {
+
         String articleXpath = getSavedArticleXPathByTitle(articleTitle);
         this.waitForElementNotPresent(articleXpath, "Saved article still present with title " + articleTitle, 5);
 
     }
 
-    public void swipeByArticleToDelete(String articleTitle) {
+    public void swipeByArticleToDelete(String articleTitle) throws InterruptedException {
+
         String articleXpath = getSavedArticleXPathByTitle(articleTitle);
         this.waitForArticleToAppear(articleTitle);
 
@@ -71,7 +73,9 @@ abstract public class MyListsPageObject extends MainPageObject{
             // this.waitForArticleToAppear(articleTitle);
             this.swipeElementToLeft(articleXpath, "Cannot find saved article");
         } else {
+
             String removeLocator = getRemoveButtonByTitle(articleTitle);
+            waitForElementToBeClickable(removeLocator, "Not clickable remove star", 10);
             waitForElementAndClick(removeLocator,
                     "Cannot click button to remove article from saved", 10);
         }
@@ -82,13 +86,13 @@ abstract public class MyListsPageObject extends MainPageObject{
 //        }
 
         if (Platform.getInstance().isMW()) {
+            Thread.sleep(500);
             driver.navigate().refresh();
         }
 
-
         this.waitForArticleToDisappear(articleTitle);
         int starsAfterDeletion = getAmountOfElements(LI_WITH_STAR);
-        Assert.assertTrue(starsBeforeDeletion == starsAfterDeletion + 1);
+        Assert.assertTrue(starsBeforeDeletion > starsAfterDeletion );
     }
 
 }

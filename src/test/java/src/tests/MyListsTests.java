@@ -15,17 +15,17 @@ public class MyListsTests extends CoreTestCase {
     private static final String PASSWORD = "Qwerty!23";
 
     @Test
-    public void testSaveFirstArticleToMyList() {
+    public void testSaveFirstArticleToMyList() throws InterruptedException {
 
-        String articleTitleArt = "Java (programming language)";
-        //String articleTitleFirst = "Object-oriented programming language";
-        String articleTitleFirst = "bject-oriented programming language";
+
+        String titleOfFirstArticle = "Java (programming language)";
+        String descriptionOfFirstArticle = "bject-oriented programming language";
         //String folderName = "List";
 
         SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine("Java");
-        searchPageObject.clickByArticleWithSubstring(articleTitleFirst);
+        searchPageObject.clickByArticleWithSubstring(descriptionOfFirstArticle);
 
 
         ArticlePageObject articlePageObject = ArticlePageObjectFactory.get(driver);
@@ -66,11 +66,11 @@ public class MyListsTests extends CoreTestCase {
             myListsPageObject.openFolderByNameiOS(FOLDER_NAME);
          }
 
-        myListsPageObject.swipeByArticleToDelete(articleTitleArt);
+        myListsPageObject.swipeByArticleToDelete(titleOfFirstArticle);
     }
 
     @Test
-    public void testSaveTwoArticleToMyListAndDeleteOneOfThem() {
+    public void testSaveTwoArticleToMyListAndDeleteOneOfThem() throws InterruptedException {
 
         String titleOfFirstArticle = "Java (programming language)";
         //String articleTitleFirst = "Object-oriented programming language";

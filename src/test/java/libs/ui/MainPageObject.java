@@ -121,6 +121,13 @@ public class MainPageObject {
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
+    public WebElement waitForElementToBeClickable(String locator, String errorMessage, long timeOutSeconds) {
+        By by = this.getLocatorByString(locator);
+        WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
+        wait.withMessage(errorMessage + "\n");
+        return wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
     public WebElement waitForElementPresent(String locator, String errorMessage) {
         return waitForElementPresent(locator, errorMessage, 5);
     }

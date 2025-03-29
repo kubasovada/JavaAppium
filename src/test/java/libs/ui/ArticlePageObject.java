@@ -117,9 +117,10 @@ abstract public class ArticlePageObject extends MainPageObject {
     }
 
     // метод для ios и веба
-    public void addArticlesToMySaved(String folderNAme) {
+    public void addArticlesToMySaved(String folderNAme) throws InterruptedException {
         if (Platform.getInstance().isMW()) {
             removeArticleFromSavedIfItAdded();
+            waitForElementToBeClickable(OPTIONS_SAVE_ARTICLE_BUTTON_TO_MY_LIST, "Not clickable Save article button", 9);
             waitForElementAndClick(OPTIONS_SAVE_ARTICLE_BUTTON_TO_MY_LIST, "Cannot find Save article button", 9);
 
 //            waitForElementPresent(LOGIN_BUTTON, "No login button", 3);

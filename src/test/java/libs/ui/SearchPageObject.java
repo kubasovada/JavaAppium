@@ -39,7 +39,7 @@ abstract public class SearchPageObject extends MainPageObject{
 
     public void initSearchInput()
     {
-       // this.skipOnboarding();
+       //this.skipOnboarding();
         this.waitForElementPresent((SEARCH_INIT_ELEMENT), "Cannot find search input");
         this.waitForElementAndClick(SEARCH_INIT_ELEMENT,
                 "Cannot find and click search init element", 5);
