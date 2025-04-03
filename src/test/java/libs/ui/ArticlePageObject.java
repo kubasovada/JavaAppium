@@ -42,7 +42,7 @@ abstract public class ArticlePageObject extends MainPageObject {
     @Step("Get article title")
     public String getArticleTitle() {
         WebElement titleElement = waitForTitleElement();
-        screenshot(this.takeScreenshot("article_title"));
+        screenshot(this.takeScreenshot("articleTitle"));
         if (Platform.getInstance().isAndroid()) {
             return titleElement.getText();
         } else if (Platform.getInstance().isIOS()) {

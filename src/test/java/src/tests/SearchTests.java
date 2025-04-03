@@ -1,5 +1,7 @@
 package src.tests;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import libs.CoreTestCase;
 import libs.ui.SearchPageObject;
 import libs.ui.factories.SearchPageObjectFactory;
@@ -10,6 +12,11 @@ import static org.junit.Assert.assertTrue;
 public class SearchTests extends CoreTestCase {
 
     @Test
+    @Features(value={@Feature(value="Search")})
+    @DisplayName("Search article by title")
+    @Description("We open 'Java (programming language) article with description 'Object-oriented programming language'")
+    @Step("Starting test testSearch")
+    @Severity(value=SeverityLevel.BLOCKER)
     public void testSearch()  {
 
         SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
@@ -20,6 +27,11 @@ public class SearchTests extends CoreTestCase {
     }
 
     @Test
+    @Features(value={@Feature(value="Search")})
+    @DisplayName("Cancel search article by title")
+    @Description("We cancel search of article 'Java (programming language) article with description 'Object-oriented programming language'")
+    @Step("Starting test testCancelSearch")
+    @Severity(value=SeverityLevel.BLOCKER)
     public void testCancelSearch() {
 
         SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
@@ -33,6 +45,11 @@ public class SearchTests extends CoreTestCase {
 
 
     @Test
+    @Features(value={@Feature(value="Search")})
+    @DisplayName("Search result > 0")
+    @Description("We search an article and have result")
+    @Step("Starting test testAmountOfNotEmptySearch")
+    @Severity(value=SeverityLevel.BLOCKER)
     public void testAmountOfNotEmptySearch() {
 
         String searchLine = "Linkin Park Disco";
@@ -46,6 +63,10 @@ public class SearchTests extends CoreTestCase {
 
 
     @Test
+    @Features(value={@Feature(value="Search")})
+    @DisplayName("Search result is Empty")
+    @Description("We search an article and have no result")
+    @Step("Starting test testAmountOfEmptySearch")
     public void testAmountOfEmptySearch() {
 
         String searchLine = "asdfkkajhsdgfhg";

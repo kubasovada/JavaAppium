@@ -1,5 +1,7 @@
 package src.tests;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import libs.CoreTestCase;
 import libs.Platform;
 import libs.ui.*;
@@ -18,6 +20,11 @@ public class MyListsTests extends CoreTestCase {
     private static final String PASSWORD = "Qwerty!23";
 
     @Test
+    @Features(value={@Feature(value="Save articles to the reading list")})
+    @DisplayName("Save two articles to the reading list")
+    @Description("Save 'Java (programming language)' and 'Appium' articles to the reading list")
+    @Step("Starting test testChangeScreenOrientationOnSearchResults")
+    @Severity(value=SeverityLevel.NORMAL)
     public void testSaveFirstArticleToMyList() throws InterruptedException {
 
 
@@ -73,6 +80,11 @@ public class MyListsTests extends CoreTestCase {
     }
 
     @Test
+    @Features(value={@Feature(value="Save articles to the reading list")})
+    @DisplayName("Save two articles to the reading list, delete one of them after that")
+    @Description("Save 'Java (programming language)' and 'Appium' articles to the reading list, then delete")
+    @Step("Starting test testSaveTwoArticleToMyListAndDeleteOneOfThem")
+    @Severity(value=SeverityLevel.NORMAL)
     public void testSaveTwoArticleToMyListAndDeleteOneOfThem() throws InterruptedException {
 
         String titleOfFirstArticle = "Java (programming language)";

@@ -5,6 +5,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Description;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -465,7 +466,7 @@ public class MainPageObject {
     public String takeScreenshot(String name) {
     TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
     File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-    String path = System.getProperty("user.dir") + "/" + "_screenshot.png";
+    String path = System.getProperty("user.dir") + "/" + name + "_screenshot.png";
     try {
         FileUtils.copyFile(source, new File(path));
         System.out.println("The screenshot was taken: " + path);
@@ -476,6 +477,7 @@ public class MainPageObject {
     }
 
     @Attachment
+    @Description("Метод, возвращающий массив байтов. Информация будет добавлена в отчёт в виде файла")
     public static byte[] screenshot(String path) {
     byte[] bytes = new byte[0];
 
