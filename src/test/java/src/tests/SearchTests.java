@@ -5,6 +5,8 @@ import libs.ui.SearchPageObject;
 import libs.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
+
 public class SearchTests extends CoreTestCase {
 
     @Test

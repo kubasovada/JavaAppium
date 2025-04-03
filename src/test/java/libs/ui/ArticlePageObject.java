@@ -1,5 +1,6 @@
 package libs.ui;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import libs.Platform;
@@ -29,7 +30,7 @@ abstract public class ArticlePageObject extends MainPageObject {
         super(driver);
     }
 
-
+    @Step("Waiting for title on the article page")
     public WebElement waitForTitleElement() {
         return this.waitForElementPresent(TITLE, "Cannot find article title on page", 15);
     }
@@ -38,8 +39,10 @@ abstract public class ArticlePageObject extends MainPageObject {
         return this.waitForElementPresent(TITLE2, "Cannot find article title on page", 15);
     }
 
+    @Step("Get article title")
     public String getArticleTitle() {
         WebElement titleElement = waitForTitleElement();
+        screenshot(this.takeScreenshot("article_title"));
         if (Platform.getInstance().isAndroid()) {
             return titleElement.getText();
         } else if (Platform.getInstance().isIOS()) {
@@ -49,7 +52,7 @@ abstract public class ArticlePageObject extends MainPageObject {
         }
 
     }
-
+    @Step("Swiping to footer on article page")
     public void swipeToFooter() {
         if (Platform.getInstance().isAndroid()) {
             this.swipeUpToFindElement(FOOTER_ELEMENT,
@@ -61,7 +64,7 @@ abstract public class ArticlePageObject extends MainPageObject {
             this.scrollWebPageTillElementNotVisible(FOOTER_ELEMENT, "Cannot find the end of the article", 40);
         }
     }
-
+    @Step("Adding the article to my list")
     public void addArticleToMyList(String folderName) {
 
         this.waitForElementAndClick(OPTIONS_SAVE_ARTICLE_BUTTON_TO_MY_LIST, "save", 5);
@@ -75,7 +78,7 @@ abstract public class ArticlePageObject extends MainPageObject {
                 "ok list",
                 5);
     }
-
+    @Step("Closing the article")
     public void closeArticle() {
 
         this.waitForElementAndClick(NAVIGATE_BACK,
@@ -117,6 +120,7 @@ abstract public class ArticlePageObject extends MainPageObject {
     }
 
     // метод для ios и веба
+    @Step("Adding article to my saved articles (iOS/Web)")
     public void addArticlesToMySaved(String folderNAme) throws InterruptedException {
         if (Platform.getInstance().isMW()) {
             removeArticleFromSavedIfItAdded();
@@ -137,7 +141,7 @@ abstract public class ArticlePageObject extends MainPageObject {
             waitForElementAndClick(OK_BUTTON_IN_MODAL, "", 5);
         }
     }
-
+    @Step("Removing the article from saved if it has been added")
     public void removeArticleFromSavedIfItAdded() {
         if (isElementPresent(OPTIONS_REMOVE_FROM_MY_LIST_BUTTON)) {
             waitForElementAndClick(OPTIONS_REMOVE_FROM_MY_LIST_BUTTON, "Cannot click button to remove an article from saved", 1);

@@ -7,7 +7,10 @@ import libs.ui.factories.ArticlePageObjectFactory;
 import libs.ui.factories.MyListsPageObjectFactory;
 import libs.ui.factories.NavigationUIFactory;
 import libs.ui.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class MyListsTests extends CoreTestCase {
     private static final String FOLDER_NAME = "List";
